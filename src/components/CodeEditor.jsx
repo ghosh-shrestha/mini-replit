@@ -1,10 +1,9 @@
 import Editor from '@monaco-editor/react';
-import { useState, useEffect } from 'react';
-import {codeTemplates} from '../constants/codeTemplates.js';
+import { useEffect } from 'react';
 function CodeEditor({language,code,setCode,savedCodes,setSavedCodes}){
     useEffect(() => {
         setCode(savedCodes[language]);
-    },[language,savedCodes]);
+    },[language,savedCodes,setCode]);
     const languageMap = {
         "C":"c",
         "C++":"cpp",
