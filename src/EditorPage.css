@@ -1,223 +1,168 @@
-.editor-container {
-    display: flex;
-    gap: 20px;
-    padding: 20px;
-    align-items: flex-start;
-    width: 100%;
+/* ==========================
+   PAGE
+========================== */
+
+.editor-page{
+    min-height:100vh;
+    background:#f3f4f6;
 }
 
-.sidebar {
-    width: 220px;
-    min-height: 500px;
-    border-right: 1px solid lightgray;
-    padding: 20px;
-    flex-shrink: 0;
+/* ==========================
+   NAVBAR
+========================== */
+
+.editor-header{
+    height:70px;
+    background:#ffffff;
+    border-bottom:1px solid #dcdcdc;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:0 28px;
+
+    position:sticky;
+    top:0;
+    z-index:100;
 }
 
-.code-area {
-    flex: 1;
-    padding: 20px;
-}
-
-.output-box {
-    margin-top: 20px;
-    border: 1px solid lightgray;
-    padding: 15px;
-    border-radius: 8px;
-}
-
-.sidebar h3 {
-    margin-bottom: 15px;
-}
-
-.sidebar p {
-    padding: 8px;
-    cursor: pointer;
-}
-
-.sidebar p:hover {
-    background: #f0f0f0;
-    border-radius: 6px;
-}
-
-select {
-    padding: 8px;
-    margin: 10px 0;
-    border-radius: 6px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-}
-
-select:hover {
-    background-color: #f0f0f0;
-    cursor: pointer;
-}
-
-select:focus {
-    outline: none;
-    border: 2px solid gray;
-}
-
-.editor-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 25px;
-    flex-wrap: wrap;
-    gap: 15px;
-    margin: 20px;
-}
 .editor-header h1{
-    font-size: 38px;
-    font-weight: 700;
-}
-.language-select{
-    padding:10px 16px;
-    border:none;
-    border-radius:10px;
-    background:hsl(243, 52%, 84%);
-    color:white;
-    font-size:15px;
-    font-weight:600;
-    cursor:pointer;
-    outline:none;
-    margin-left: auto;
+    font-size:28px;
+    font-weight:700;
+    color:#2d2d2d;
+    letter-spacing:.3px;
 }
 
-.language-select:hover{
-    background:#4338ca;
+.navbar-actions{
+    display:flex;
+    align-items:center;
+    gap:18px;
 }
 
-@media (max-width:768px) {
+/* ==========================
+   TOOLBAR
+========================== */
 
-    .editor-container {
-        flex-direction: column;
-    }
-
-    .sidebar {
-        width: 100%;
-    }
-
-    .code-area {
-        width: 100%;
-    }
-
-    .editor-header {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .language-select {
-        width: 100%;
-    }
-
-}
 .editor-toolbar{
     display:flex;
+    align-items:center;
     gap:12px;
-    padding:15px 20px;
-    flex-wrap:wrap;
-    margin: 20px 0;
-}
-
-.editor-wrapper{
-    border-radius:12px;
-    overflow:hidden;
-    border:1px solid var(--border-color);
-    box-shadow:0 12px 35px rgba(0,0,0,.3);
-}
-.output-box{
-    background:#1e1e1e;
-    color:#00ff66;
-    border-radius: 12px;
-    padding: 15px;
-    font-family: monospace;
-    min-height:180px;
-    padding:20px;
-    font-family:Consolas, monospace;
-    white-space:pre-wrap;
-    transition:all .4s ease;
-}
-.output-box:hover{
-    transform:scale(1.01);
-}
-.editor-toolbar{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 15px;
-    flex-wrap: wrap;
-    margin: 20px 0;
 }
 
 .tool-btn{
-    background: #c2c0eb;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 10px;
-    font-size: 15px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
+    padding:10px 18px;
+    background:#ffffff;
+    color:#333;
+    border:1px solid #d6d6d6;
+    border-radius:8px;
+
+    font-size:15px;
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.25s;
 }
 
 .tool-btn:hover{
-    background: #4338ca;
-    transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(79,70,229,0.35);
+    background:#f4f4f4;
+    border-color:#bfbfbf;
 }
 
 .tool-btn:active{
-    transform: scale(0.96);
+    transform:scale(.96);
 }
-.editor-page{
-    backdrop-filter: blur(15px);
-    border-radius: 20px;
-    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
-    background: linear-gradient(135deg,#7660f2,#4f46e5,#7c3aed);
-    background-size: 300% 300%;
-    animation: gradientMove 10s ease infinite;
-    animation:fadeIn .6s ease;
+
+/* Run Button */
+
+.tool-btn:first-child{
+    background:#2563eb;
+    color:white;
+    border:none;
 }
-@keyframes gradientMove{
-    0%{
-        background-position:0% 50%;
-    }
-    50%{
-        background-position:100% 50%;
-    }
-    100%{
-        background-position:0% 50%;
-    }
+
+.tool-btn:first-child:hover{
+    background:#1d4ed8;
 }
-@keyframes fadeIn{
-    from{
-        opacity:0;
-        transform:translateY(15px);
-    }
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
+
+/* ==========================
+   LANGUAGE
+========================== */
+
+.language-select{
+    padding:10px 14px;
+    border:1px solid #d6d6d6;
+    border-radius:8px;
+
+    font-size:15px;
+    background:white;
+
+    cursor:pointer;
+
+    outline:none;
+
+    transition:.25s;
 }
-.terminal{
-    margin-top:30px;
-    border-radius:12px;
+
+.language-select:hover{
+    border-color:#9ca3af;
+}
+
+.language-select:focus{
+    border-color:#2563eb;
+}
+
+/* ==========================
+   CODE AREA
+========================== */
+
+.editor-container{
+    padding:25px;
+}
+
+.code-area{
+    border-radius:10px;
     overflow:hidden;
-    box-shadow:0 8px 20px rgba(0,0,0,0.15);
+
+    border:1px solid #d8d8d8;
+
+    box-shadow:0 3px 8px rgba(0,0,0,.08);
+}
+
+/* ==========================
+   TERMINAL
+========================== */
+
+.terminal{
+    margin:25px;
 }
 
 .terminal-header{
     background:#2d2d2d;
     color:white;
+
     padding:10px 16px;
+
+    border-radius:8px 8px 0 0;
+
     font-weight:600;
-    font-size:15px;
-}
-.editor-header h1{
-    font-size:34px;
-    font-weight:700;
-    color:hsl(0, 16%, 9%);
 }
 
+.output-box{
+
+    background:#1e1e1e;
+    color:#7CFC00;
+
+    min-height:170px;
+
+    padding:18px;
+
+    border-radius:0 0 8px 8px;
+
+    font-family:Consolas, monospace;
+
+    white-space:pre-wrap;
+
+    border:1px solid #333;
+}
