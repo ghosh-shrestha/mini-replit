@@ -11,12 +11,11 @@ function App() {
   useEffect(() => {document.body.className = theme;},[theme]);
   return (
     <div className="{theme}">
-      <button onClick={() => setTheme(theme === "light"?"dark":"light")}>Toggle Theme</button>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Login />} />
-          <Route path="/Signup" element={<Signup />} />
-          <Route path="/editor" element={<EditorPage />} />
+          <Route path="/" element={<Login theme={theme} setTheme={setTheme} />} />
+          <Route path="/Signup" element={<Signup theme={theme} setTheme={setTheme} />} />
+          <Route path="/editor" element={<EditorPage theme={theme} setTheme={setTheme} />} />
         </Routes></BrowserRouter>
     </div>
 

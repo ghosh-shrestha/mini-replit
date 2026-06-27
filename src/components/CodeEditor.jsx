@@ -11,10 +11,9 @@ function CodeEditor({language,code,setCode,savedCodes,setSavedCodes}){
         "Python":"python"
 
     };
-    return(<div>
-        <h3>Code Editor</h3>
-        <Editor height="400px"
-        width="350px"
+    return(<div className='editor-wrapper'>
+        <Editor height="500px"
+        width="750px"
         language={languageMap[language]}
         value={code}
         onChange={(value)=>{setCode(value);
