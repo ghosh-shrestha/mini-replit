@@ -39,6 +39,12 @@
     align-items:center;
     gap:18px;
 }
+.editor-wrapper{
+    width: 1000px;
+    overflow: hidden;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
 
 /* ==========================
    TOOLBAR
