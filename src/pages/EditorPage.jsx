@@ -24,15 +24,59 @@ function EditorPage({ theme, setTheme }) {
             setCode(savedCode);
         }
     }, []);
+    const runCode = async () => {
+        setOutput("Running...");
+
+        const languageMap = {
+            "C": 50,
+            "C++": 54,
+            "Java": 62,
+            "Python": 71,
+        };
+
+        try {
+            const response = await fetch(
+                "https://ce.judge0.com/submissions?base64_encoded=true&wait=true",
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                        source_code: btoa(unescape(encodeURIComponent(code))),
+                        language_id: languageMap[language],
+                        stdin: "",
+                    }),
+                }
+            );
+
+            const data = await response.json();
+            console.log(data);
+
+            if (data.stdout) {
+                setOutput(atob(data.stdout));
+            } else if (data.stderr) {
+                setOutput(atob(data.stderr));
+            } else if (data.compile_output) {
+                setOutput(atob(data.compile_output));
+            } else if (data.message) {
+                setOutput(data.message);
+            } else {
+                setOutput(JSON.stringify(data, null, 2));
+            }
+        } catch (err) {
+            console.error(err);
+            setOutput("Unable to connect to the execution server.");
+        }
+    };
     return (<div className='editor-page'>
-        <Navbar
-            runCode={() => setOutput("Code executed successfully")} />
+        <Navbar />
         <div className='editor-header'>
             <h1>Mini-Replit</h1>
             <div className='navbar-actions'>
                 <div className="editor-toolbar">
 
-                    <button className="tool-btn">▶ Run</button>
+                    <button className="tool-btn" onClick={runCode}>▶ Run</button>
 
                     <button className="tool-btn" onClick={handleSave}>💾 Save</button>
 
