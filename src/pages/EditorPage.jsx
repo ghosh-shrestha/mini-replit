@@ -36,7 +36,7 @@ function EditorPage({ theme, setTheme }) {
 
         try {
             const response = await fetch(
-                "https://ce.judge0.com/submissions?base64_encoded=true&wait=true",
+                `${process.env.REACT_APP_BASE_URL}${process.env.REACT_APP_UPLOAD_API}`,
                 {
                     method: "POST",
                     headers: {
